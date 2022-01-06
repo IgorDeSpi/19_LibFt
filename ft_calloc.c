@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ide-spir <narvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/04 12:06:58 by ide-spir          #+#    #+#             */
-/*   Updated: 2022/01/04 12:08:49 by ide-spir         ###   ########.fr       */
+/*   Created: 2022/01/06 15:26:40 by ide-spir          #+#    #+#             */
+/*   Updated: 2022/01/06 15:26:40 by ide-spir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <string.h>
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*ptr;
 
-#endif
+	ptr = malloc(size * nmemb);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, nmemb);
+	return (ptr);
+}
