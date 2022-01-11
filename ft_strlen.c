@@ -6,20 +6,18 @@
 /*   By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 12:03:35 by ide-spir          #+#    #+#             */
-/*   Updated: 2022/01/04 12:06:24 by ide-spir         ###   ########.fr       */
+/*   Updated: 2022/01/10 17:21:36 by ide-spir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-	unsigned int	size;
+	size_t	i;
 
-	size = 0;
-	if (!s)
-		return (0);
-	while (s[size])
-		size++;
-	return (size);
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }

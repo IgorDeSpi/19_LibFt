@@ -6,7 +6,7 @@
 /*   By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 15:05:17 by ide-spir          #+#    #+#             */
-/*   Updated: 2022/01/04 15:38:18 by ide-spir         ###   ########.fr       */
+/*   Updated: 2022/01/11 11:29:14 by ide-spir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,15 @@
 
 size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
 {
-	size_t	i;
-	size_t	j;
-	size_t	len_dst;
+	size_t	dst_len;
+	size_t	src_len;
 
-	i = 0;
-	j = 0;
-	len_dst = ft_strlen(dst);
-	while (dst[i] != '\0' && i < dstsize)
-		i++;
-	while (src[j] != '\0' && i < dstsize - 1)
-		dst[i++] = src[j++];
-	if (dstsize != 0 && dstsize >= len_dst)
-		dst[i] = '\0';
-	if (dstsize < ft_strlen(dst))
-		return (ft_strlen(src) + dstsize);
-	else
-		return (ft_strlen(src) + len_dst);
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
+	dst += dst_len;
+	if (dstsize > dst_len)
+		ft_strlcpy(dst, src, dstsize - dst_len);
+	if (dstsize < dst_len)
+		return (src_len + dstsize);
+	return (dst_len + src_len);
 }

@@ -3,57 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ide-spir <narvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 16:03:54 by ide-spir          #+#    #+#             */
-/*   Updated: 2022/01/06 16:03:54 by ide-spir         ###   ########.fr       */
+/*   Updated: 2022/01/11 12:21:05 by ide-spir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	itoa_length(int n)
+static char	*int_to_str(int n, int pow_ten, short sign, char *out)
 {
-	int	len;
+	int	i;
 
-	len = 0;
-	if (n < 0)
-		len++;
-	if (n == 0)
-		len = 1;
-	while (n)
+	i = 0;
+	if (sign == -1)
+		i++;
+	while (pow_ten)
 	{
-		len++;
-		n = n / 10;
+		out[i++] = (char)(n / pow_ten * sign + '0');
+		n %= pow_ten;
+		pow_ten /= 10;
 	}
-	return (len);
+	out[i] = '\0';
+	return (out);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*str;
-	int		len;
+	size_t	i;
+	char	*dst;
+	short	sign;
+	int		power_ten;
 
-	len = itoa_length(n);
-	str = ft_strnew(len);
-	if (str == NULL)
-		return (NULL);
-	if (n == 0)
-		str[0] = '0';
+	i = 1;
+	power_ten = 1;
+	sign = 0;
 	if (n < 0)
+		sign++;
+	while (n / power_ten / 10 && i++)
+		power_ten *= 10;
+	dst = (char *)malloc(i + sign + 1);
+	if (!dst)
+		return (NULL);
+	if (sign == 1)
 	{
-		str[0] = '-';
-		if (n == -2147483648)
-		{
-			str[len-- - 1] = '8';
-			n = n / 10;
-		}
-		n = -n;
+		dst[0] = '-';
+		sign = -1;
 	}
-	while (n != 0 && len >= 0)
-	{
-		str[len-- - 1] = n % 10 + 48;
-		n = n / 10;
-	}
-	return (str);
+	else
+		sign++;
+	return (int_to_str(n, power_ten, sign, dst));
 }

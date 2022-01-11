@@ -6,7 +6,7 @@
 /*   By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 12:41:58 by ide-spir          #+#    #+#             */
-/*   Updated: 2022/01/04 12:45:41 by ide-spir         ###   ########.fr       */
+/*   Updated: 2022/01/11 11:24:40 by ide-spir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,19 @@
 
 void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 {
-	unsigned char	*tmp1;
-	unsigned char	*tmp2;
+	char		*d;
+	const char	*s;
+	size_t		i;
 
-	tmp1 = (unsigned char *)src;
-	tmp2 = (unsigned char *)dst;
-	while (n > 0)
+	d = (char *)dst;
+	s = (char *)src;
+	if (!d && !s)
+		return (NULL);
+	i = 0;
+	while (i < n)
 	{
-		*tmp2++ = *tmp1++;
-		n--;
+		d[i] = s[i];
+		i++;
 	}
 	return (dst);
 }

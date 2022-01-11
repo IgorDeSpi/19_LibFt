@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 11:46:31 by ide-spir          #+#    #+#             */
-/*   Updated: 2022/01/10 15:19:25 by ide-spir         ###   ########.fr       */
+/*   Created: 2022/01/11 13:25:59 by ide-spir          #+#    #+#             */
+/*   Updated: 2022/01/11 13:31:11 by ide-spir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+int	ft_lstsize(t_list *lst)
 {
-	write(fd, &c, 1);
+	size_t	len;
+
+	if (!lst)
+		return (0);
+	len = 0;
+	while (lst && ++len)
+		lst = lst->next;
+	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:01:10 by ide-spir          #+#    #+#             */
-/*   Updated: 2022/01/04 14:55:07 by ide-spir         ###   ########.fr       */
+/*   Updated: 2022/01/11 11:27:14 by ide-spir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,20 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t			i;
-	unsigned char	*a;
-	unsigned char	*b;
+	char	*save;
 
-	i = 0;
-	a = (unsigned char *)dst;
-	b = (unsigned char *)src;
-	if (a > b)
+	if (!dst && !src)
+		return (NULL);
+	save = dst;
+	if (src < dst)
 	{
-		while (i < len)
-		{
-			a[len - 1] = b[len - 1];
-			len--;
-		}
+		dst += len;
+		src += len;
+		while (len--)
+			*(unsigned char *)--dst = *(unsigned char *)--src;
 	}
 	else
-	{
-		while (i < len)
-		{
-			a[i] = b[i];
-			i++;
-		}
-	}
-	return (dst);
+		while (len--)
+			*(unsigned char *)dst++ = *(unsigned char *)src++;
+	return (save);
 }

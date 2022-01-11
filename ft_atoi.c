@@ -6,7 +6,7 @@
 /*   By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 16:22:57 by ide-spir          #+#    #+#             */
-/*   Updated: 2022/01/04 16:35:44 by ide-spir         ###   ########.fr       */
+/*   Updated: 2022/01/11 11:45:14 by ide-spir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,31 @@
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	res;
-	int	n;
+	unsigned long	res;
+	short			n;
+	unsigned char	digit;
 
-	i = 0;
 	res = 0;
-	n = 0;
-	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
-		i++;
-	if (str[i] == '-')
+	n = 1;
+	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
+		str++;
+	if (*str == '-')
 	{
 		n = -1;
-		i++;
+		str++;
 	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
+	else if (*str == '+')
+		str++;
+	while (*str != '\0' && *str >= '0' && *str <= '9')
 	{
-		res = res * 10 + str[i] - '0';
-		i++;
+		digit = *str++ - '0';
+		if (digit > 9)
+			break ;
+		res = res * 10 + digit;
+		if (res > 2147483647 && n == 1)
+			return (-1);
+		if (res > 2147483648 && n == -1)
+			return (0);
 	}
 	return (n * res);
 }

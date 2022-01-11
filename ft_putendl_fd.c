@@ -6,7 +6,7 @@
 /*   By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 11:52:06 by ide-spir          #+#    #+#             */
-/*   Updated: 2022/01/10 11:55:30 by ide-spir         ###   ########.fr       */
+/*   Updated: 2022/01/11 12:10:58 by ide-spir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	int	count;
-
 	if (!s)
-		return (0);
-	count = 0;
-	count += ft_pustr_fd(s, fd);
-	count += ft_putchar_fd('\n', fd);
-	return (count);
+		return ;
+	write(fd, s, ft_strlen(s));
+	write(fd, "\n", 1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ide-spir <narvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:52:02 by ide-spir          #+#    #+#             */
-/*   Updated: 2022/01/06 15:52:02 by ide-spir         ###   ########.fr       */
+/*   Updated: 2022/01/11 12:02:37 by ide-spir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ char	**ft_split(const char *s, char c)
 	size_t	nb_strings;
 	size_t	i;
 
+	if (!s)
+		return (NULL);
 	nb_strings = count_strings(s, c);
 	strs = (char **)malloc(sizeof(char *) * (nb_strings + 1));
 	if (strs != NULL)
