@@ -6,7 +6,7 @@
 #    By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 12:32:13 by ide-spir          #+#    #+#              #
-#    Updated: 2022/01/11 13:31:51 by ide-spir         ###   ########.fr        #
+#    Updated: 2022/01/11 14:23:10 by ide-spir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,13 @@ ft_isascii.c \
 ft_isdigit.c \
 ft_isprint.c \
 ft_itoa.c \
+ft_lstadd_back.c \
 ft_lstadd_front.c \
+ft_lstclear.c \
+ft_lstdelone.c \
+ft_lstiter.c \
 ft_lstlast.c \
+ft_lstmap.c \
 ft_lstnew.c \
 ft_lstsize.c \
 ft_memchr.c \
