@@ -6,13 +6,13 @@
 /*   By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 16:03:54 by ide-spir          #+#    #+#             */
-/*   Updated: 2022/01/11 12:21:05 by ide-spir         ###   ########.fr       */
+/*   Updated: 2022/01/12 15:26:06 by ide-spir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*int_to_str(int n, int pow_ten, short sign, char *out)
+static char	*int_to_str(int n, int pow_ten, short sign, char *output)
 {
 	int	i;
 
@@ -21,12 +21,12 @@ static char	*int_to_str(int n, int pow_ten, short sign, char *out)
 		i++;
 	while (pow_ten)
 	{
-		out[i++] = (char)(n / pow_ten * sign + '0');
-		n %= pow_ten;
+		output[i++] = (char)(n / pow_ten * sign + '0');
+		n = n % pow_ten;
 		pow_ten /= 10;
 	}
-	out[i] = '\0';
-	return (out);
+	output[i] = '\0';
+	return (output);
 }
 
 char	*ft_itoa(int n)

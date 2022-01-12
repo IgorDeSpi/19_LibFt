@@ -6,7 +6,7 @@
 /*   By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 16:22:57 by ide-spir          #+#    #+#             */
-/*   Updated: 2022/01/12 13:04:24 by ide-spir         ###   ########.fr       */
+/*   Updated: 2022/01/12 17:22:32 by ide-spir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ static int	is_space(char c)
 int	ft_atoi(const char *str)
 {
 	unsigned long	res;
-	int				negative;
+	int				neg;
 
-	negative = 1;
+	neg = 1;
 	res = 0;
 	while (is_space(*str))
 		str++;
 	if (*str == '-')
 	{
-		negative = -1;
+		neg = -1;
 		str++;
 	}
 	else if (*str == '+')
@@ -39,10 +39,10 @@ int	ft_atoi(const char *str)
 	while (*str >= '0' && *str <= '9')
 	{
 		res = res * 10 + *str++ - '0';
-		if (res > 2147483647 && negative == 1)
+		if (res > 2147483647 && neg == 1)
 			return (-1);
-		if (res > 2147483648 && negative == -1)
+		if (res > 2147483648 && neg == -1)
 			return (0);
 	}
-	return (negative * res);
+	return (neg * res);
 }
