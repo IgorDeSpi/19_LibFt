@@ -6,7 +6,7 @@
 /*   By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:52:02 by ide-spir          #+#    #+#             */
-/*   Updated: 2022/01/11 12:02:37 by ide-spir         ###   ########.fr       */
+/*   Updated: 2022/01/11 16:38:56 by ide-spir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static size_t	count_strings(const char *s, char c)
 	return (nb_strings);
 }
 
-static const char	*dup_until_c(char **dest, const char *src, char c)
+static const char	*dup_until_c(char **cpy, const char *src, char c)
 {
 	size_t	len;
 	size_t	i;
@@ -41,16 +41,16 @@ static const char	*dup_until_c(char **dest, const char *src, char c)
 	len = 0;
 	while (src[len] != '\0' && src[len] != c)
 		len++;
-	*dest = (char *)malloc(sizeof(char) * (len + 1));
-	if (*dest == NULL)
+	*cpy = (char *)malloc(sizeof(char) * (len + 1));
+	if (*cpy == NULL)
 		return (NULL);
 	i = 0;
 	while (i < len)
 	{
-		(*dest)[i] = src[i];
+		(*cpy)[i] = src[i];
 		i++;
 	}
-	(*dest)[i] = '\0';
+	(*cpy)[i] = '\0';
 	src += len + 1;
 	return (src);
 }

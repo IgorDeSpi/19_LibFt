@@ -6,13 +6,13 @@
 /*   By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 16:22:57 by ide-spir          #+#    #+#             */
-/*   Updated: 2022/01/11 14:37:21 by ide-spir         ###   ########.fr       */
+/*   Updated: 2022/01/12 13:04:24 by ide-spir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	my_isspace(char c)
+static int	is_space(char c)
 {
 	if (c == ' ' || (c >= '\t' && c <= '\r'))
 		return (1);
@@ -27,7 +27,7 @@ int	ft_atoi(const char *str)
 
 	negative = 1;
 	res = 0;
-	while (my_isspace(*str))
+	while (is_space(*str))
 		str++;
 	if (*str == '-')
 	{
@@ -38,7 +38,7 @@ int	ft_atoi(const char *str)
 		str++;
 	while (*str >= '0' && *str <= '9')
 	{
-		res = (res * 10) + (*str++ - 48);
+		res = res * 10 + *str++ - '0';
 		if (res > 2147483647 && negative == 1)
 			return (-1);
 		if (res > 2147483648 && negative == -1)

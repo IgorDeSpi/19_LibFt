@@ -6,7 +6,7 @@
 #    By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 12:32:13 by ide-spir          #+#    #+#              #
-#    Updated: 2022/01/11 14:23:10 by ide-spir         ###   ########.fr        #
+#    Updated: 2022/01/12 14:03:14 by ide-spir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,15 +36,6 @@ ft_isascii.c \
 ft_isdigit.c \
 ft_isprint.c \
 ft_itoa.c \
-ft_lstadd_back.c \
-ft_lstadd_front.c \
-ft_lstclear.c \
-ft_lstdelone.c \
-ft_lstiter.c \
-ft_lstlast.c \
-ft_lstmap.c \
-ft_lstnew.c \
-ft_lstsize.c \
 ft_memchr.c \
 ft_memcmp.c \
 ft_memcpy.c \
@@ -71,29 +62,50 @@ ft_substr.c \
 ft_tolower.c \
 ft_toupper.c
 
+SRCS_BONUS = ft_lstadd_back.c \
+ft_lstadd_front.c \
+ft_lstclear.c \
+ft_lstdelone.c \
+ft_lstiter.c \
+ft_lstlast.c \
+ft_lstmap.c \
+ft_lstnew.c \
+ft_lstsize.c
+
 # **************************************************************************** #
 #                                    RULES                                     #
 # **************************************************************************** #
 
 OBJS = ${SRCS:.c=.o}
 
+OBJS_BONUS = ${SRCS_BONUS:.c=.o}
+
 RM = rm -f
 
 HEADER = -I ./includes
 
 .c.o:
-	${CC} ${CFLAGS} ${HEADER} -c $< -o ${<:.c=.o}
+	@${CC} ${CFLAGS} ${HEADER} -c $< -o ${<:.c=.o}
 
 $(NAME): ${OBJS}
-	ar rc ${NAME} ${OBJS}
+	@ar rc ${NAME} ${OBJS}
+	@echo "Libft.a created"
+
+bonus: ${OBJS_BONUS}
+	@ar rc $(NAME) $(OBJS_BONUS)
+	@echo "Bonus added to Libft.a"
+
 all: ${NAME}
 
 clean:
-	${RM} ${OBJS}
+	@${RM} ${OBJS}
 
 fclean: clean
-	${RM} ${NAME}
+	@${RM} ${NAME} ${OBJS_BONUS}
+	@echo "Libft.a and all .o deleted"
 
 re: fclean all
+
+re_all_bonus: fclean all bonus
 
 .PHONY : all clean fclean re
