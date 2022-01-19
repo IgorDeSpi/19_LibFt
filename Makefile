@@ -6,7 +6,7 @@
 #    By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 12:32:13 by ide-spir          #+#    #+#              #
-#    Updated: 2022/01/17 17:06:06 by ide-spir         ###   ########.fr        #
+#    Updated: 2022/01/19 11:48:21 by ide-spir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,11 +99,11 @@ all: ${NAME}
 
 clean:
 	@${RM} ${OBJS}
-	@echo "Libft.a deleted"
+	@echo "All .o deleted"
 
 fclean: clean
 	@${RM} ${NAME} ${OBJS_BONUS}
-	@echo "All .o deleted"
+	@echo "Libft.a deleted"
 
 re: fclean all
 
