@@ -6,7 +6,7 @@
 /*   By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 16:22:57 by ide-spir          #+#    #+#             */
-/*   Updated: 2022/01/19 14:20:35 by ide-spir         ###   ########.fr       */
+/*   Updated: 2022/01/19 15:47:40 by ide-spir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	check_char(const char *str, int *sign)
 	int	i;
 
 	i = 0;
-	if (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
+	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
