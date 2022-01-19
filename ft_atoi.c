@@ -6,54 +6,48 @@
 /*   By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 16:22:57 by ide-spir          #+#    #+#             */
-/*   Updated: 2022/01/19 11:07:11 by ide-spir         ###   ########.fr       */
+/*   Updated: 2022/01/19 14:20:35 by ide-spir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	is_space(char c)
+static int	check_char(const char *str, int *sign)
 {
-	if (c == ' ' || (c >= '\t' && c <= '\r'))
-		return (1);
-	else
-		return (0);
-}
+	int	i;
 
-static int	ft_handle_overflow(int res, int neg)
-{
-	if (res == INT_MIN)
-		return (INT_MIN);
-	if (neg == 1)
-		return (-1);
-	else
-		return (0);
+	i = 0;
+	if (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			*sign = -1;
+		i++;
+	}
+	return (i);
 }
 
 int	ft_atoi(const char *str)
 {
-	long long	res;
-	int			neg;
-	int			i;
+	unsigned long	res;
+	int				sign;
+	int				i;
 
-	neg = 1;
+	sign = 1;
 	res = 0;
 	i = 0;
-	while (is_space(str[i]))
-		i++;
-	if (str[i] == '-')
-	{
-		neg = -1;
-		i++;
-	}
-	else if (str[i] == '+')
-		i++;
+	i = check_char(str, &sign);
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		res = res * 10 + str[i] - '0';
+		if (res > 9223372036854775807)
+		{
+			if (sign == -1)
+				return (0);
+			return (-1);
+		}
 		i++;
-		if (res < 0)
-			return (ft_handle_overflow(res, neg));
 	}
-	return (neg * res);
+	return (res * sign);
 }

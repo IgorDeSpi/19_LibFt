@@ -6,7 +6,7 @@
 /*   By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 16:11:29 by ide-spir          #+#    #+#             */
-/*   Updated: 2022/01/11 12:03:51 by ide-spir         ###   ########.fr       */
+/*   Updated: 2022/01/19 13:49:34 by ide-spir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!s)
 		return (NULL);
 	new = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (new != NULL)
+	if (new)
 	{
 		i = 0;
 		while (s[i])

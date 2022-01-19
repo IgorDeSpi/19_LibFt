@@ -6,7 +6,7 @@
 /*   By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:32:56 by ide-spir          #+#    #+#             */
-/*   Updated: 2022/01/11 11:51:47 by ide-spir         ###   ########.fr       */
+/*   Updated: 2022/01/19 13:53:20 by ide-spir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ char	*ft_strdup(const char *s)
 	void	*new;
 
 	len = ft_strlen(s) + 1;
-	new = malloc(len);
-	if (new == NULL)
+	new = (char *)malloc(sizeof(char) * len);
+	if (!new)
 		return (NULL);
 	return ((char *)ft_memcpy(new, s, len));
 }

@@ -6,7 +6,7 @@
 /*   By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:49:39 by ide-spir          #+#    #+#             */
-/*   Updated: 2022/01/11 12:01:53 by ide-spir         ###   ########.fr       */
+/*   Updated: 2022/01/19 13:44:47 by ide-spir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	start;
 	size_t	end;
 
-	if (!s1)
+	if (!s1 || !set)
 		return (NULL);
 	start = 0;
 	while (s1[start] && ft_char_in_set(s1[start], set))

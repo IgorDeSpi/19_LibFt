@@ -6,7 +6,7 @@
 /*   By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:52:02 by ide-spir          #+#    #+#             */
-/*   Updated: 2022/01/11 16:38:56 by ide-spir         ###   ########.fr       */
+/*   Updated: 2022/01/19 12:08:07 by ide-spir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static const char	*dup_until_c(char **cpy, const char *src, char c)
 	while (src[len] != '\0' && src[len] != c)
 		len++;
 	*cpy = (char *)malloc(sizeof(char) * (len + 1));
-	if (*cpy == NULL)
+	if (!cpy)
 		return (NULL);
 	i = 0;
 	while (i < len)
@@ -79,14 +79,14 @@ char	**ft_split(const char *s, char c)
 		return (NULL);
 	nb_strings = count_strings(s, c);
 	strs = (char **)malloc(sizeof(char *) * (nb_strings + 1));
-	if (strs != NULL)
+	if (strs)
 	{
 		strs[nb_strings] = NULL;
 		i = 0;
 		while (i < nb_strings)
 		{
 			s = dup_until_c(strs + i, s, c);
-			if (s == NULL)
+			if (!s)
 			{
 				free_strs(&strs, i);
 				break ;
