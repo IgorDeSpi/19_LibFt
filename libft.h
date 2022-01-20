@@ -6,7 +6,7 @@
 /*   By: ide-spir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 12:06:58 by ide-spir          #+#    #+#             */
-/*   Updated: 2022/01/18 15:38:36 by ide-spir         ###   ########.fr       */
+/*   Updated: 2022/01/20 16:47:36 by ide-spir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <stdio.h>
 # include <string.h>
 # include <ctype.h>
-# include <limits.h>
 
 typedef struct s_list
 {
